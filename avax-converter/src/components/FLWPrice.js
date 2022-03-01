@@ -2,6 +2,7 @@ import React from 'react'
 import {sendAvaxValueGivenFLW} from '../utils/interact'
 import styled from 'styled-components';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 
 
@@ -21,6 +22,12 @@ function FLWPrice() {
         setFLWforGivenAVAX(value/tempFLW);
 
     }
+
+    useEffect(async () => {
+        var tmp = await sendAvaxValueGivenFLW();
+        setCurrentFLW(tmp);
+
+    }, [])
 
     return (
         <Container>
